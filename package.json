@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "binary",
   "version": "3.0.1",
-  "description": "webpage",
+  "description": "binary",
   "main": "index.js",
   "author": "Ganna Kulyk",
   "scripts": {
