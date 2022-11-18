@@ -3,6 +3,7 @@
 $fontfamily: 'Lato', sans-serif;
 $minwidth: 320px;
 
+@import 'baguetteBox';
 @import 'mixins';
 @import 'normalizer';
 @import 'ibg';
