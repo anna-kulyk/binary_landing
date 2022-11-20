@@ -73,3 +73,14 @@ function showItem(item) {
 function hideItem(item) {
     item.style.display = 'none';
 }
+
+//====================================================================================
+
+let contactForm = document.querySelector('.contact__form');
+
+contactForm.addEventListener('submit', (event) => contactFormSubmitHandler(event));
+
+function contactFormSubmitHandler(event) {
+    event.preventDefault();
+    contactForm.reset();
+}
