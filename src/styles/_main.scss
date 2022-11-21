@@ -121,11 +121,17 @@
     background-color: #fff;
     position: relative;
     z-index: 50;
+
+    &__menu {
+        overflow: hidden;
+        background-color: #fff;
+    }
 }
 
 .menu {
     padding: 22px 0;
     border-bottom: 1px #f2f2f2 solid;
+
 
 		&__nav {
 		}
@@ -218,6 +224,14 @@
 
 //=============================================================================
 
+.sticky + .about {
+    padding-top: 200px;
+
+    @media screen and (max-width: 992px) {
+        padding-top: 130px;
+    }
+}
+
 .about {
     padding: 130px 0 60px;
 
@@ -306,7 +320,10 @@
         padding: 105px 0 25px 0;
 
         @media screen and (max-width: 992px) {
-            padding: 60px 0 25px 0;
+            padding: 90px 0 25px 0;
+        }
+        @media screen and (max-width: 370px) {
+            padding: 50px 0 25px 0;
         }
     }
 
@@ -402,6 +419,9 @@
     padding: 180px 0 100px;
 
     @media screen and (max-width: 992px) {
+        padding: 100px 0 50px 0;
+    }
+    @media screen and (max-width: 370px) {
         padding: 60px 0 50px 0;
     }
 

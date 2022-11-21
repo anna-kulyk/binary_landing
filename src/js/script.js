@@ -20,7 +20,7 @@ portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
 
 function navMenuHandler(event) {
-    if (event.target.nodeName != 'A') {
+    if (event.target.nodeName != 'A' || screen.width <= 370) {
         return;
     }
     menuHandler(event.target, navMenu.querySelectorAll('.menu__item'))
@@ -72,6 +72,20 @@ function showItem(item) {
 
 function hideItem(item) {
     item.style.display = 'none';
+}
+
+//====================================================================================
+
+let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+
+window.addEventListener('scroll', stickyNavHandler);
+
+function stickyNavHandler() {
+  if (window.pageYOffset >= sticky && screen.width > 370) {
+    navMenu.classList.add("sticky");
+  } else {
+    navMenu.classList.remove("sticky");
+  }
 }
 
 //====================================================================================
