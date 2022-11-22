@@ -132,6 +132,9 @@
     padding: 22px 0;
     border-bottom: 1px #f2f2f2 solid;
 
+    @media screen and (max-width: 992px) {
+        padding: 15px 0;
+    }
 
 		&__nav {
 		}

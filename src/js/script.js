@@ -12,8 +12,27 @@ ibg();
 
 //====================================================================================
 
-const navMenu = document.querySelector('.content__menu');
-const portfolioMenu = document.querySelector('.portfolio__menu');
+let navMenu = document.querySelector('.content__menu');
+let portfolioMenu = document.querySelector('.portfolio__menu');
+
+let about = document.querySelector("#about");
+let portfolio = document.querySelector("#portfolio");
+let contact = document.querySelector("#contact");
+let navMenuItems = Array.from(navMenu.querySelectorAll('.menu__item'));
+
+let observer = new IntersectionObserver(function(entries) {
+
+    entries.forEach(entry => {
+        if(entry.isIntersecting  && screen.width > 370) {
+            let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
+            menuHandler(element, navMenuItems);
+        }
+    });
+}, { threshold: [0] });
+
+observer.observe(about);
+observer.observe(portfolio);
+observer.observe(contact);
 
 navMenu.addEventListener('click', (event) => navMenuHandler(event));
 portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
@@ -98,3 +117,5 @@ function contactFormSubmitHandler(event) {
     event.preventDefault();
     contactForm.reset();
 }
+
+//====================================================================================
