@@ -23,7 +23,7 @@ let navMenuItems = Array.from(navMenu.querySelectorAll('.menu__item'));
 let observer = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
-        if(entry.isIntersecting  && screen.width > 370) {
+        if(entry.isIntersecting  && window.innerWidth > 370) {
             let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
             menuHandler(element, navMenuItems);
         }
@@ -39,7 +39,7 @@ portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
 
 function navMenuHandler(event) {
-    if (event.target.nodeName != 'A' || screen.width <= 370) {
+    if (event.target.nodeName != 'A' || window.innerWidth <= 370) {
         return;
     }
     menuHandler(event.target, navMenu.querySelectorAll('.menu__item'))
@@ -100,7 +100,7 @@ let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 window.addEventListener('scroll', stickyNavHandler);
 
 function stickyNavHandler() {
-  if (window.pageYOffset >= sticky && screen.width > 370) {
+  if (window.pageYOffset >= sticky && window.innerWidth > 370) {
     navMenu.classList.add("sticky");
   } else {
     navMenu.classList.remove("sticky");
