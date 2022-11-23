@@ -28,7 +28,7 @@ let contact = document.querySelector("#contact");
 let sticky;
 
 window.addEventListener("load", () => {
-    let h = window.outerHeight;
+    let h = window.innerHeight;
     document.querySelector('.mainblock').style.height = `${h}px`;
     sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
