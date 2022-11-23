@@ -25,6 +25,22 @@ let contact = document.querySelector("#contact");
 
 //====================================================================================
 
+let sticky;
+
+window.addEventListener("load", () => {
+    let h = window.outerHeight;
+    document.querySelector('.mainblock').style.height = `${h}px`;
+    sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+});
+
+window.addEventListener("resize", () => {
+    let h = window.outerHeight;
+    document.querySelector('.mainblock').style.height = `${h}px`;
+    sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+});
+
+//====================================================================================
+
 navMenu.addEventListener('click', (event) => navMenuHandler(event));
 portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
@@ -60,7 +76,7 @@ let observer = new IntersectionObserver(function(entries) {
             menuHandler(element, navMenuItems);
         }
     });
-}, { threshold: [0] });
+}, { threshold: [0.5] });
 
 observer.observe(about);
 observer.observe(portfolio);
@@ -68,19 +84,19 @@ observer.observe(contact);
 
 //====================================================================================
 
-window.addEventListener("resize", setDefaultNavMenuColors);
+// window.addEventListener("resize", setDefaultNavMenuColors);
 
-function setDefaultNavMenuColors() {
-    if (window.innerWidth > 370) return;
-    navMenuItems.forEach((item, index) => {
-        if (index == 0) {
-            item.classList.add('menu__item_active');
-        }
-        else {
-            item.classList.remove('menu__item_active');
-        }
-    })
-}
+// function setDefaultNavMenuColors() {
+//     if (window.innerWidth > 370) return;
+//     navMenuItems.forEach((item, index) => {
+//         if (index == 0) {
+//             item.classList.add('menu__item_active');
+//         }
+//         else {
+//             item.classList.remove('menu__item_active');
+//         }
+//     })
+// }
 
 //====================================================================================
 
@@ -119,7 +135,7 @@ function hideItem(item) {
 
 //====================================================================================
 
-let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+// let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 
 window.addEventListener('scroll', stickyNavHandler);
 
