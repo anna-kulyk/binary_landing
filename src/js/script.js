@@ -14,6 +14,8 @@ ibg();
 
 //====================================================================================
 
+let mainblock = document.querySelector('.mainblock');
+
 let navMenu = document.querySelector('.content__menu');
 let portfolioMenu = document.querySelector('.portfolio__menu');
 
@@ -159,6 +161,19 @@ function hideItem(item) {
 //   }
 // }
 
+let observer2 = new IntersectionObserver(function(entries) {
+
+    entries.forEach(entry => {
+        if(!entry.isIntersecting  && !mediaQuerySm.matches) {
+            navMenu.classList.add("sticky");
+        }
+        else {
+            navMenu.classList.remove("sticky");
+        }
+    });
+}, { threshold: [0] });
+
+observer2.observe(mainblock);
 
 //====================================================================================
 
