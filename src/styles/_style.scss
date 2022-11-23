@@ -3,7 +3,7 @@ html {
 }
 
 .wrapper{
-    overflow: hidden;
+    // overflow: hidden;
     min-height: 100%;
     width: 100%;
     @include flexbox();

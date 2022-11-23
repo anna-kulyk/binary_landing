@@ -23,6 +23,8 @@ let about = document.querySelector("#about");
 let portfolio = document.querySelector("#portfolio");
 let contact = document.querySelector("#contact");
 
+const mediaQuerySm = window.matchMedia('(max-width: 370px)');
+
 //====================================================================================
 
 let sticky;
@@ -30,7 +32,7 @@ let sticky;
 window.addEventListener("load", () => {
     let h = window.innerHeight;
     document.querySelector('.mainblock').style.height = `${h}px`;
-    sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+    // sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
 
 // if (navigator.userAgent.indexOf("Mobi") > -1) {
@@ -46,7 +48,7 @@ window.addEventListener("load", () => {
 window.addEventListener("resize", () => {
     let h = window.innerHeight;
     document.querySelector('.mainblock').style.height = `${h}px`;
-    sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+    // sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
 
 //====================================================================================
@@ -56,7 +58,7 @@ portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
 
 function navMenuHandler(event) {
-    if (event.target.nodeName != 'A' || window.innerWidth <= 370) {
+    if (event.target.nodeName != 'A' || mediaQuerySm.matches) {
         return;
     }
     menuHandler(event.target, navMenuItems)
@@ -147,15 +149,16 @@ function hideItem(item) {
 
 // let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 
-window.addEventListener('scroll', stickyNavHandler);
+// window.addEventListener('scroll', stickyNavHandler);
 
-function stickyNavHandler() {
-  if (window.pageYOffset >= sticky && window.innerWidth > 370) {
-    navMenu.classList.add("sticky");
-  } else {
-    navMenu.classList.remove("sticky");
-  }
-}
+// function stickyNavHandler() {
+//   if (window.pageYOffset >= sticky && window.innerWidth > 370) {
+//     navMenu.classList.add("sticky");
+//   } else {
+//     navMenu.classList.remove("sticky");
+//   }
+// }
+
 
 //====================================================================================
 
