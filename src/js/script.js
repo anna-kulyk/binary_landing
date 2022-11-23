@@ -1,3 +1,5 @@
+//==================================================================================== 
+
 function ibg(){
     let elements = document.querySelectorAll('.ibg');
     elements?.forEach(function(item){
@@ -15,24 +17,13 @@ ibg();
 let navMenu = document.querySelector('.content__menu');
 let portfolioMenu = document.querySelector('.portfolio__menu');
 
+let navMenuItems = Array.from(navMenu.querySelectorAll('.menu__item'));
+
 let about = document.querySelector("#about");
 let portfolio = document.querySelector("#portfolio");
 let contact = document.querySelector("#contact");
-let navMenuItems = Array.from(navMenu.querySelectorAll('.menu__item'));
 
-let observer = new IntersectionObserver(function(entries) {
-
-    entries.forEach(entry => {
-        if(entry.isIntersecting  && window.innerWidth > 370) {
-            let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
-            menuHandler(element, navMenuItems);
-        }
-    });
-}, { threshold: [0] });
-
-observer.observe(about);
-observer.observe(portfolio);
-observer.observe(contact);
+//====================================================================================
 
 navMenu.addEventListener('click', (event) => navMenuHandler(event));
 portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
@@ -42,7 +33,7 @@ function navMenuHandler(event) {
     if (event.target.nodeName != 'A' || window.innerWidth <= 370) {
         return;
     }
-    menuHandler(event.target, navMenu.querySelectorAll('.menu__item'))
+    menuHandler(event.target, navMenuItems)
 }
 
 function portfolioMenuHandler(event) {
@@ -61,7 +52,40 @@ function menuHandler(targetElement, menuItems) {
 
 //====================================================================================
 
+let observer = new IntersectionObserver(function(entries) {
+
+    entries.forEach(entry => {
+        if(entry.isIntersecting  && window.innerWidth > 370) {
+            let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
+            menuHandler(element, navMenuItems);
+        }
+    });
+}, { threshold: [0] });
+
+observer.observe(about);
+observer.observe(portfolio);
+observer.observe(contact);
+
+//====================================================================================
+
+window.addEventListener("resize", setDefaultNavMenuColors);
+
+function setDefaultNavMenuColors() {
+    if (window.innerWidth > 370) return;
+    navMenuItems.forEach((item, index) => {
+        if (index == 0) {
+            item.classList.add('menu__item_active');
+        }
+        else {
+            item.classList.remove('menu__item_active');
+        }
+    })
+}
+
+//====================================================================================
+
 let portfolioItems = document.querySelectorAll('.portfolio__item');
+
 document.querySelector('.filter').addEventListener('click', (e) => filterHandler(e));
 
 
