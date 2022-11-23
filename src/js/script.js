@@ -33,6 +33,16 @@ window.addEventListener("load", () => {
     sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
 
+if (navigator.userAgent.indexOf("Mobi") > -1) {
+    window.addEventListener("resize", () => {
+        if (window.matchMedia("only screen and (orientation: landscape)").matches || window.innerHeight < 500) {
+            let h = window.outerHeight;
+            document.querySelector('.mainblock').style.height = `${h}px`;
+            sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+        }
+    });
+}
+
 // window.addEventListener("resize", () => {
 //     let h = window.innerHeight;
 //     document.querySelector('.mainblock').style.height = `${h}px`;
