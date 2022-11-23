@@ -34,8 +34,8 @@ window.addEventListener("load", () => {
 });
 
 window.addEventListener("resize", () => {
-    let h = window.outerHeight;
-    document.querySelector('.mainblock').style.height = `${h}px`;
+    // let h = window.outerHeight;
+    // document.querySelector('.mainblock').style.height = `${h}px`;
     // sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
 
