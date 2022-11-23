@@ -33,11 +33,11 @@ window.addEventListener("load", () => {
     sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
 });
 
-window.addEventListener("resize", () => {
-    let h = window.innerHeight;
-    document.querySelector('.mainblock').style.height = `${h}px`;
-    sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
-});
+// window.addEventListener("resize", () => {
+//     let h = window.innerHeight;
+//     document.querySelector('.mainblock').style.height = `${h}px`;
+//     sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
+// });
 
 //====================================================================================
 
