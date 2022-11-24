@@ -29,10 +29,10 @@ const mediaQuerySm = window.matchMedia('(max-width: 370px)');
 
 //====================================================================================
 
-// window.addEventListener("load", () => {
-//     let h = window.innerHeight;
-//     document.querySelector('.mainblock').style.height = `${h}px`;
-// });
+window.addEventListener("load", () => {
+    let h = window.innerHeight;
+    document.querySelector('.mainblock').style.height = `${h}px`;
+});
 
 // if (navigator.userAgent.indexOf("Mobi") > -1) {
 //     window.addEventListener("resize", () => {
@@ -44,10 +44,10 @@ const mediaQuerySm = window.matchMedia('(max-width: 370px)');
 //     });
 // }
 
-// window.addEventListener("resize", () => {
-//     let h = window.innerHeight;
-//     document.querySelector('.mainblock').style.height = `${h}px`;
-// });
+window.addEventListener("resize", () => {
+    let h = window.innerHeight;
+    document.querySelector('.mainblock').style.height = `${h}px`;
+});
 
 //====================================================================================
 
