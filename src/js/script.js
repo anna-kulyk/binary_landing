@@ -29,13 +29,10 @@ const mediaQuerySm = window.matchMedia('(max-width: 370px)');
 
 //====================================================================================
 
-let sticky;
-
-window.addEventListener("load", () => {
-    let h = window.innerHeight;
-    document.querySelector('.mainblock').style.height = `${h}px`;
-    // sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
-});
+// window.addEventListener("load", () => {
+//     let h = window.innerHeight;
+//     document.querySelector('.mainblock').style.height = `${h}px`;
+// });
 
 // if (navigator.userAgent.indexOf("Mobi") > -1) {
 //     window.addEventListener("resize", () => {
@@ -47,11 +44,10 @@ window.addEventListener("load", () => {
 //     });
 // }
 
-window.addEventListener("resize", () => {
-    let h = window.innerHeight;
-    document.querySelector('.mainblock').style.height = `${h}px`;
-    // sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
-});
+// window.addEventListener("resize", () => {
+//     let h = window.innerHeight;
+//     document.querySelector('.mainblock').style.height = `${h}px`;
+// });
 
 //====================================================================================
 
@@ -149,19 +145,7 @@ function hideItem(item) {
 
 //====================================================================================
 
-// let sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
-
-// window.addEventListener('scroll', stickyNavHandler);
-
-// function stickyNavHandler() {
-//   if (window.pageYOffset >= sticky && window.innerWidth > 370) {
-//     navMenu.classList.add("sticky");
-//   } else {
-//     navMenu.classList.remove("sticky");
-//   }
-// }
-
-let observer2 = new IntersectionObserver(function(entries) {
+let observerSticky = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
         if(!entry.isIntersecting  && !mediaQuerySm.matches) {
@@ -173,7 +157,7 @@ let observer2 = new IntersectionObserver(function(entries) {
     });
 }, { threshold: [0] });
 
-observer2.observe(mainblock);
+observerSticky.observe(mainblock);
 
 //====================================================================================
 
