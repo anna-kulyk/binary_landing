@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
 // }
 
 window.addEventListener("resize", () => {
-    let h = window.innerHeight;
+    let h = window.innerHeight > 500 ? window.innerHeight : 500;
     document.querySelector('.mainblock').style.height = `${h}px`;
 });
 
@@ -70,6 +70,8 @@ function portfolioMenuHandler(event) {
 }
 
 function menuHandler(targetElement, menuItems) {
+    if (targetElement.classList.contains('menu__item_active')) return;
+
     for (const element of menuItems) {
         element.classList.remove('menu__item_active');
     }
@@ -81,12 +83,12 @@ function menuHandler(targetElement, menuItems) {
 let observer = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
-        if(entry.isIntersecting  && window.innerWidth > 370) {
+        if(entry.isIntersecting  && !mediaQuerySm.matches) {
             let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
             menuHandler(element, navMenuItems);
         }
     });
-}, { threshold: [0.5] });
+}, { rootMargin: `-50% 0px -40%`, threshold: [0] });
 
 observer.observe(about);
 observer.observe(portfolio);
