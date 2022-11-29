@@ -34,9 +34,10 @@ window.addEventListener("load", calculateMainblockHeight);
 window.addEventListener("resize", calculateMainblockHeight);
 
 function calculateMainblockHeight() {
-    let computedHeight = getComputedStyle(mainblock).height;
-    let h = window.innerHeight > parseInt(computedHeight) ? `${window.innerHeight}px` : computedHeight;
-    mainblock.style.height = h;
+    mainblock.style.height = `${window.innerHeight}px`;
+    if (mainblock.clientHeight < mainblock.scrollHeight) {
+        mainblock.style.height = 'fit-content';
+    }
 }
 
 //====================================================================================
@@ -46,17 +47,15 @@ portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
 
 function navMenuHandler(event) {
-    if (event.target.nodeName != 'A' || mediaQuerySm.matches) {
-        return;
+    if (event.target.nodeName == 'A' && !mediaQuerySm.matches) {
+        menuHandler(event.target, navMenuItems);
     }
-    menuHandler(event.target, navMenuItems)
 }
 
 function portfolioMenuHandler(event) {
-    if (event.target.nodeName != 'LI') {
-        return;
+    if (event.target.nodeName == 'LI') {
+        menuHandler(event.target, portfolioMenu.querySelectorAll('.menu__item'));
     }
-    menuHandler(event.target, portfolioMenu.querySelectorAll('.menu__item'))
 }
 
 function menuHandler(targetElement, menuItems) {
@@ -70,7 +69,7 @@ function menuHandler(targetElement, menuItems) {
 
 //====================================================================================
 
-let observer = new IntersectionObserver(function(entries) {
+let sectionObserver = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
         if(entry.isIntersecting  && !mediaQuerySm.matches) {
@@ -80,25 +79,9 @@ let observer = new IntersectionObserver(function(entries) {
     });
 }, { rootMargin: `-50% 0px -40%`, threshold: [0] });
 
-observer.observe(about);
-observer.observe(portfolio);
-observer.observe(contact);
-
-//====================================================================================
-
-// window.addEventListener("resize", setDefaultNavMenuColors);
-
-// function setDefaultNavMenuColors() {
-//     if (window.innerWidth > 370) return;
-//     navMenuItems.forEach((item, index) => {
-//         if (index == 0) {
-//             item.classList.add('menu__item_active');
-//         }
-//         else {
-//             item.classList.remove('menu__item_active');
-//         }
-//     })
-// }
+sectionObserver.observe(about);
+sectionObserver.observe(portfolio);
+sectionObserver.observe(contact);
 
 //====================================================================================
 
@@ -111,7 +94,9 @@ function filterHandler(e) {
     if (e.target.nodeName != 'LI') {
         return;
     }
+
     let itemClass = `f_${e.target.dataset.filter}`;
+
     if (e.target.dataset.filter == 'all') {
         portfolioItems.forEach(item => showItem(item))
     }
@@ -137,7 +122,7 @@ function hideItem(item) {
 
 //====================================================================================
 
-let observerSticky = new IntersectionObserver(function(entries) {
+let stickyObserver = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
         if(!entry.isIntersecting  && !mediaQuerySm.matches) {
@@ -149,7 +134,7 @@ let observerSticky = new IntersectionObserver(function(entries) {
     });
 }, { threshold: [0] });
 
-observerSticky.observe(mainblock);
+stickyObserver.observe(mainblock);
 
 //====================================================================================
 
