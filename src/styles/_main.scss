@@ -125,6 +125,12 @@
 
     &__menu {
         background-color: #fff;
+
+        @media screen and (max-width: 370px) {
+            .menu__item_active {
+                color: #3c3c3c;
+            }
+        }
     }
 }
 
@@ -175,10 +181,6 @@
 
         &_active {
             color: #ada074;
-
-            @media screen and (max-width: 370px) {
-                color: #3c3c3c;
-            }
         }
 
         @media screen and (max-width: 370px) {

@@ -47,7 +47,7 @@ portfolioMenu.addEventListener('click', (event) => portfolioMenuHandler(event));
 
 
 function navMenuHandler(event) {
-    if (event.target.nodeName == 'A' && !mediaQuerySm.matches) {
+    if (event.target.nodeName == 'A') {
         menuHandler(event.target, navMenuItems);
     }
 }
@@ -72,7 +72,7 @@ function menuHandler(targetElement, menuItems) {
 let sectionObserver = new IntersectionObserver(function(entries) {
 
     entries.forEach(entry => {
-        if(entry.isIntersecting  && !mediaQuerySm.matches) {
+        if(entry.isIntersecting) {
             let element = navMenuItems.filter(el => el.hash == `#${entry.target.id}`)[0];
             menuHandler(element, navMenuItems);
         }
