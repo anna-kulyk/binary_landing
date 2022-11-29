@@ -27,11 +27,17 @@ let contact = document.querySelector("#contact");
 
 const mediaQuerySm = window.matchMedia('(max-width: 370px)');
 
+// const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
+
 //====================================================================================
 
 window.addEventListener("load", () => {
     let h = window.innerHeight;
     document.querySelector('.mainblock').style.height = `${h}px`;
+
+    // if (isMobile) {
+    //     navMenuItems.forEach(item => item.classList.add('no-hover'));
+    // }
 });
 
 // if (navigator.userAgent.indexOf("Mobi") > -1) {

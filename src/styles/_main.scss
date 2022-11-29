@@ -172,11 +172,13 @@
         transition: color 0.3s linear;
         cursor: pointer;
 
-        &_active {
-            color: #ada074;
+        @media (hover:hover) {
+            &:hover {
+                color: #ada074;
+            }
         }
 
-        &:hover {
+        &_active {
             color: #ada074;
         }
 
