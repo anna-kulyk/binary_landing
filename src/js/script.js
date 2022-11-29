@@ -27,33 +27,17 @@ let contact = document.querySelector("#contact");
 
 const mediaQuerySm = window.matchMedia('(max-width: 370px)');
 
-// const isMobile = window.matchMedia("(any-pointer:coarse)").matches;
-
 //====================================================================================
 
-window.addEventListener("load", () => {
-    let h = window.innerHeight;
-    document.querySelector('.mainblock').style.height = `${h}px`;
+window.addEventListener("load", calculateMainblockHeight);
 
-    // if (isMobile) {
-    //     navMenuItems.forEach(item => item.classList.add('no-hover'));
-    // }
-});
+window.addEventListener("resize", calculateMainblockHeight);
 
-// if (navigator.userAgent.indexOf("Mobi") > -1) {
-//     window.addEventListener("resize", () => {
-//         if (window.matchMedia("only screen and (orientation: landscape)").matches || window.innerHeight < 500) {
-//             let h = window.outerHeight;
-//             document.querySelector('.mainblock').style.height = `${h}px`;
-//             sticky = window.pageYOffset + navMenu.getBoundingClientRect().top;
-//         }
-//     });
-// }
-
-window.addEventListener("resize", () => {
-    let h = window.innerHeight > 500 ? window.innerHeight : 500;
-    document.querySelector('.mainblock').style.height = `${h}px`;
-});
+function calculateMainblockHeight() {
+    let computedHeight = getComputedStyle(mainblock).height;
+    let h = window.innerHeight > parseInt(computedHeight) ? `${window.innerHeight}px` : computedHeight;
+    mainblock.style.height = h;
+}
 
 //====================================================================================
 
