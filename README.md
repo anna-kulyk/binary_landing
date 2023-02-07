@@ -46,6 +46,7 @@ npm run build
 ## Acknowledgements
 
 - [baguetteBox](https://feimosi.github.io/baguetteBox.js/)
+- [design template](https://www.figma.com/file/WLKlPBUzD3LKHxz1TgsgwD/Funiro?node-id=0%3A1)
 
 ## Author
 
