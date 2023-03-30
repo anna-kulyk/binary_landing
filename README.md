@@ -1,6 +1,6 @@
 # Binary Landing Page
 
-A landing page for the web design studio Binary. Portfolio project.
+A landing page for the web design studio Binary.
 
 ## [Check the live demo](https://binary-landing.netlify.app/)
 
